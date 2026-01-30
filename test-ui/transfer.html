@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Money Transfer</h1>
+  <button id="transferBtn">Transfer</button>
+  <div id="result"></div>
+  <script>
+    document.getElementById('transferBtn').onclick = async () => {
+      const res = await fetch('/api/transfer', { method: 'POST' });
+      const data = await res.json();
+      document.getElementById('result').innerText =
+        res.ok ? 'Success: ' + data.transactionId : 'Error: ' + data.error;
+    };
+  </script>
+</body>
+</html>
